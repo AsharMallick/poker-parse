@@ -336,6 +336,7 @@ class GgPokerStrategyService extends BaseParser {
         data.rejectedNumber++;
       }
     }
+
     return data;
   }
 

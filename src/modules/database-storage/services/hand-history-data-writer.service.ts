@@ -14,6 +14,7 @@ export class HandHistoryDataWriterService
   ) {}
 
   async saveHistory(data: any[], roomType: string, sections: any): Promise<any> {
+
     if (roomType === this.constants.poker888) {
       return this.savePokerHandHistory(data, sections);
     } else if (roomType === this.constants.ggPoker) {

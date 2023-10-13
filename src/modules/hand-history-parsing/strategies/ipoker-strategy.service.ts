@@ -13,6 +13,8 @@ class IPokerStrategyService extends BaseParser {
   }
 
   parse(sections: string[]): ParsedReturnData {
+
+
     let data: ParsedReturnData = {
       data: [],
       parsedNumber: 0,
@@ -26,6 +28,7 @@ class IPokerStrategyService extends BaseParser {
     };
 
     for (const section of sections) {
+      
       this.initHandData();
       const lines = section.split('\n');
       let lineData = this.iPokerSectionParser(lines);

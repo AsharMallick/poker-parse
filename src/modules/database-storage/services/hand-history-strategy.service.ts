@@ -2,6 +2,7 @@ import {
   ConflictException,
   InternalServerErrorException,
   NotFoundException,
+  Session,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Schema as MongooseSchema } from 'mongoose';
@@ -42,12 +43,13 @@ export class HandHistoryRepository {
   }
 
   async createHandHistory(handHistories: PokerHistoryDto[], sections: any) {
+
     try {
-      for (const query of handHistories) {
+      for (const [index, query] of handHistories.entries()) {
         let client = await this.getHistoryByGameId(query.handId);
 
         if (!client && query.handId != null) {
-          client = new this.handHistoryModel({ ...query, rawData: sections });
+          client = new this.handHistoryModel({ ...query, rawData: sections[index] });
           await client
             .save()
             .then((res) => { })

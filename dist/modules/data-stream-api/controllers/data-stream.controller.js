@@ -123,7 +123,7 @@ let DataStreamController = exports.DataStreamController = class DataStreamContro
                 if (strategyService) {
                     let data = strategyService.parse(sections);
                     await this.handModelService
-                        .saveHistory(data.data, roomType, sections[0])
+                        .saveHistory(data.data, roomType, sections)
                         .then((res) => {
                         console.log('---hand history save result---');
                         parsedFiles++;

@@ -47,10 +47,10 @@ let HandHistoryRepository = exports.HandHistoryRepository = class HandHistoryRep
     }
     async createHandHistory(handHistories, sections) {
         try {
-            for (const query of handHistories) {
+            for (const [index, query] of handHistories.entries()) {
                 let client = await this.getHistoryByGameId(query.handId);
                 if (!client && query.handId != null) {
-                    client = new this.handHistoryModel({ ...query, rawData: sections });
+                    client = new this.handHistoryModel({ ...query, rawData: sections[index] });
                     await client
                         .save()
                         .then((res) => { })

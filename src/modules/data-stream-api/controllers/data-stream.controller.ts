@@ -84,8 +84,7 @@ export class DataStreamController {
         const sections: string[] = fileContent.split(/\n\s*(?:\n\s*){1,3}/);
 
         const roomType = this.roomDetection.identifyRoom(sections[0]);
-        const strategyService =
-          this.roomStrategyFactory.createStrategy(roomType);
+        const strategyService = this.roomStrategyFactory.createStrategy(roomType);
         if (strategyService) {
           data = strategyService.parse(sections);
           this.handModelService
@@ -170,12 +169,12 @@ export class DataStreamController {
           correctFiles++;
         }
 
-        const strategyService =
-          this.roomStrategyFactory.createStrategy(roomType);
+        const strategyService = this.roomStrategyFactory.createStrategy(roomType);
         if (strategyService) {
           let data: ParsedReturnData = strategyService.parse(sections);
+
           await this.handModelService
-            .saveHistory(data.data, roomType, sections[0])
+            .saveHistory(data.data, roomType, sections)
             .then((res: any) => {
               console.log('---hand history save result---');
               parsedFiles++;
