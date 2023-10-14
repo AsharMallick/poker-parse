@@ -29,6 +29,9 @@ let DataStreamController = exports.DataStreamController = class DataStreamContro
         this.roomStrategyFactory = roomStrategyFactory;
         this.roomType = roomType;
     }
+    async test(body) {
+        return "test";
+    }
     async getHands(body) {
         const hands = await this.handModelService.getHands(body);
         return hands;
@@ -151,6 +154,13 @@ let DataStreamController = exports.DataStreamController = class DataStreamContro
         }
     }
 };
+__decorate([
+    (0, common_1.Get)('/test'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], DataStreamController.prototype, "test", null);
 __decorate([
     (0, common_1.Post)('/getHands'),
     __param(0, (0, common_1.Body)()),

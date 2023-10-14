@@ -9,6 +9,7 @@ export declare class DataStreamController {
     private readonly roomStrategyFactory;
     private readonly roomType;
     constructor(roomDetection: DetectorService, handModelService: HandHistoryDataWriterService, roomStrategyFactory: RoomStrategyFactory, roomType: RoomTypes);
+    test(body: any): Promise<string>;
     getHands(body: any): Promise<any>;
     getHand(handId: string): Promise<string>;
     receiveHistory(files: Express.Multer.File[]): Promise<{

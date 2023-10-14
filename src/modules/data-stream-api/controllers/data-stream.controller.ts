@@ -35,12 +35,10 @@ export class DataStreamController {
   ) { }
 
 
-  // @Post('/getHands')
-  // async getHands(@Body() body: any): Promise<any[]> {
-  //   // Access the body data here
-  //   const hands = await this.handModelService.getHands(body.data);
-  //   return hands;
-  // }
+  @Get('/test')
+  async test(@Body() body: any): Promise<string> {
+    return "test"
+  }
 
   @Post('/getHands')
   async getHands(@Body() body: any) {
