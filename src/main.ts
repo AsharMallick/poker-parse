@@ -5,7 +5,7 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 
 import { HttpExceptionFilter } from './shared/filters/http-exception.filter';
 
-async function bootstrap() {
+export async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: ['error', 'warn']
   });
@@ -29,7 +29,6 @@ async function bootstrap() {
   Logger.log(
     `** Server is running <GREAT> & everything is under <CTRL>. Happy Coding **`,
   );
-
 }
 
 
