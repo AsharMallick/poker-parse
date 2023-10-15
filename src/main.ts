@@ -2,13 +2,20 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { Logger, ValidationPipe } from '@nestjs/common';
-
 import { HttpExceptionFilter } from './shared/filters/http-exception.filter';
 
+import * as express from 'express';
+
+
 export async function bootstrap() {
+
   const app = await NestFactory.create(AppModule, {
     logger: ['error', 'warn']
   });
+
+  const expressApp = express();
+
+  expressApp.use('/', express.static('public'));
 
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalPipes(new ValidationPipe());
