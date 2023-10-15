@@ -6,7 +6,7 @@ import { HttpExceptionFilter } from './shared/filters/http-exception.filter';
 
 import * as express from 'express';
 
-export async function bootstrap() {
+async function bootstrap() {
 
   const app = await NestFactory.create(AppModule, {
     logger: ['error', 'warn']
